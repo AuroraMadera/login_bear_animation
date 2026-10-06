@@ -12,6 +12,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   //Variable para el control de la visibilidad de la contraseña
   bool _obscure = true;
+  //Estado local del checkbox Remember me
+  bool _rememberMe = false;
 
   //1.1 crear el cerebro de la animacion
   StateMachineController? _controller;
@@ -231,6 +233,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               SizedBox(height: 10),
+              //Checkbox Remember me
+              Row(
+                children: [
+                  Checkbox(
+                    value: _rememberMe,
+                    onChanged: (value) {
+                      setState(() {
+                        _rememberMe = value ?? false;
+                      });
+                    },
+                  ),
+                  const Text('Remember me'),
+                ],
+              ),
               //Texto olvide mi contraseña
               SizedBox(
                 width: size.width,
